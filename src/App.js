@@ -21,9 +21,19 @@ class App extends Component {
   };
 
   addContact = (contact) => {
-    this.setState((prevState) => ({
-      contacts: [...prevState.contacts, contact],
-    }));
+    const isExist = this.state.contacts.some(
+      (oldContact) =>
+        oldContact.name.toLowerCase() === contact.name.toLowerCase()
+    );
+
+    if (isExist) {
+      alert(`${contact.name} уже есть в контактах!`);
+      return;
+    } else {
+      this.setState((prevState) => ({
+        contacts: [...prevState.contacts, contact],
+      }));
+    }
   };
   deleteContact = (id) => {
     this.setState((state) => ({
