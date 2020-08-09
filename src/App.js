@@ -21,12 +21,12 @@ class App extends Component {
   };
 
   addContact = (contact) => {
-    const isExist = this.state.contacts.some(
+    const isOldContact = this.state.contacts.some(
       (oldContact) =>
         oldContact.name.toLowerCase() === contact.name.toLowerCase()
     );
 
-    if (isExist) {
+    if (isOldContact) {
       alert(`${contact.name} уже есть в контактах!`);
       return;
     } else {
